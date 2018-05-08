@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#define N 100000
+int main(void)
+{
+	int o_stone,n_stone,fd,j,k,m_cs,y_cs,n,sum=0;
+	int start;
+	int stc[N];
+	srand((unsigned) time(NULL));
+	printf("\t\t\t\tgame start\n");
+	printf("\t\tset the stone number");
+	scanf("%d",&o_stone);
+	printf("\t\t\t\tThere are %d stones\n",o_stone);
+	for(n=1;n<=10;n++)
+	{
+		printf("\t\t\t\tIn a heap\n");
+	}
+	printf("\t\t\t\tCompletion of a heap\n");
+	n_stone=o_stone;
+	for(n=0;n<=o_stone;n++)
+	{
+		stc[n]=rand()%n_stone+1;
+		n_stone=n_stone-stc[n];
+		printf("NO.%dheap\t%dIndividual\n",n+1,stc[n]);
+		sum+=stc[n];
+		fd=n+1;
+		if(sum==o_stone)
+		{
+			break;
+		}
+	}
+	printf("there is %d heap\n",fd);
+	n=0;
+	while(1)
+	{
+		here:if(stc[fd-1]==0)
+		{
+			printf("Computer Win!");
+			break;
+		}
+		printf("��%d��ʣ�ࣺ%d\n",n+1,stc[n]);
+		printf("ȡ�ߣ�");
+		scanf("%d",&y_cs);
+		stc[n]=stc[n]-y_cs;
+		if(stc[n]==0)
+		{
+			n++;
+			goto there;
+		}
+		there:if(stc[fd-1]==0)
+		{
+			printf("You Win!");
+			break;
+		}
+		m_cs=rand()%stc[n]+1;
+		printf("����ȡ�ߣ�%d\n",m_cs);
+		stc[n]-=m_cs;
+		printf("��%d��ʣ�ࣺ%d\n",n+1,stc[n]);
+		if(stc[n]==0)
+		{
+			n++;
+			goto here;
+		}
+	}
+	return 0;
+}
+//The random code is due to the problem of Chinese display！
