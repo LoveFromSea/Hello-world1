@@ -1,0 +1,19 @@
+#include<stdio.h>
+int main()
+{
+	int i=2,x;
+	scanf("%d",&x);
+	while (1)
+	{
+		for(i=2;i<=x-1;i++)
+		{
+			if(x%i==0)
+			{
+				printf("%d\n",i);
+				x=x%i;
+				continue;
+			}
+		}
+	}
+	
+}
