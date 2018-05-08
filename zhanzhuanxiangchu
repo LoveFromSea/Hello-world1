@@ -1,0 +1,14 @@
+#include<stdio.h>
+int main()
+{
+	int a,b,c;
+	scanf("%d\n%d",&a,&b);
+	c=gys(a,b);
+	printf("gys=%d\n",c);
+	printf("gbs=%d",a*b/c);
+	return 0;
+}
+int gys(int a,int b)
+{
+	return b==0?a:gys(b,a%b);
+}
